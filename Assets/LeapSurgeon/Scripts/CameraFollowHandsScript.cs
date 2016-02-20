@@ -11,6 +11,8 @@ public class CameraFollowHandsScript : MonoBehaviour
 	public float Influence = 0.5f;
     public GameObject Hand_Left;
 	public GameObject Hand_Right;
+	public Transform DefaultLookAt;
+	public GameObject Controller;
 
 	private Vector3 BasePosition;
 
@@ -21,19 +23,24 @@ public class CameraFollowHandsScript : MonoBehaviour
 
 	void Update()
 	{
+		BasePosition = DefaultLookAt.position;
+
+        Vector3 handcenter = RotateVector( HandInfluence( Hand_Left ) ) + RotateVector( HandInfluence( Hand_Right ) );
+
 		// Position
-		Vector3 pos = BasePosition + ( HandInfluence( Hand_Left ) * Influence ) + ( HandInfluence( Hand_Right ) * Influence );
+		Vector3 pos = BasePosition + RotateVector( HandInfluence( Hand_Left ) * Influence ) + RotateVector( HandInfluence( Hand_Right ) * Influence );
+		{
+			// As it moves further into the scene the camera should also move downwards to face the surgery area
+			float extraz = Mathf.Clamp( ( handcenter.z + 0.75f ) * 0.5f, 0, 1 );
+			pos += transform.parent.forward * extraz;
+			handcenter.y -= extraz * 2;
+			handcenter.y -= 1;
+		}
 		float mag = Vector3.Distance( transform.position, pos ) * 1;
 		transform.position = Vector3.Lerp( transform.position, pos, Time.deltaTime * mag );
 
 		// Rotation
-		Vector3 handcenter = HandInfluence( Hand_Left ) + HandInfluence( Hand_Right );
-        Vector3 lookat = -( transform.position - handcenter );
-		{
-            lookat.Normalize();
-		}
-        Quaternion rot = Quaternion.LookRotation( lookat );
-		transform.rotation = Quaternion.Lerp( transform.rotation, rot, Time.deltaTime );
+		transform.rotation = Quaternion.Lerp( transform.rotation, DefaultLookAt.rotation, Time.deltaTime );
 	}
 
 	private Vector3 HandInfluence( GameObject hand )
@@ -41,18 +48,29 @@ public class CameraFollowHandsScript : MonoBehaviour
 		Vector3 influence = Vector3.zero;
 		{
 			Hand leaphand = (Hand) hand.GetComponent<CapsuleHand>().GetLeapHand();
-            if ( hand.activeInHierarchy && ( leaphand != null ) )
+			if ( hand.activeInHierarchy && ( leaphand != null ) )
 			{
 				// Don't influence the camera if they are offscreen
 				Vector pos = leaphand.PalmPosition;
-				if ( ( pos.y > -0.5f ) && ( pos.z > -1.5f ) )
+				if ( ( pos.y > -1.5f ) && ( pos.z > -1.5f ) )
 				{
 					influence.x = pos.x;
 					influence.y = pos.y;
 					influence.z = pos.z;
-				}
+					influence -= Controller.transform.position;
+                }
 			}
-		}
+        }
         return influence;
     }
+
+	private Vector3 RotateVector( Vector3 vec )
+	{
+		Vector3 output = Vector3.zero;
+		{
+			output += vec;
+			output.Normalize();
+		}
+		return output;
+	}
 }
