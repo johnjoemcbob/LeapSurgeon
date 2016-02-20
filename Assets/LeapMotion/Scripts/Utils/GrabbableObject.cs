@@ -14,6 +14,7 @@ public class GrabbableObject : MonoBehaviour {
   public Vector3 objectAxis;
 
   public bool rotateQuickly = true;
+  public bool noRotation = false;
   public bool centerGrabbedObject = false;
 
   public Rigidbody breakableJoint;

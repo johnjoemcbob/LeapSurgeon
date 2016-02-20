@@ -1,0 +1,119 @@
+fileFormatVersion: 2
+guid: 4eb46c9d35751164ca7876b5f324a0ae
+timeCreated: 1456000191
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Lip
+    100004: Tooth1
+    100006: Tooth2
+    100008: Tooth3
+    100010: Tooth4
+    100012: Tooth5
+    100014: Tooth6
+    100016: Tooth7
+    100018: Tooth8
+    400000: //RootNode
+    400002: Lip
+    400004: Tooth1
+    400006: Tooth2
+    400008: Tooth3
+    400010: Tooth4
+    400012: Tooth5
+    400014: Tooth6
+    400016: Tooth7
+    400018: Tooth8
+    2300000: Lip
+    2300002: Tooth1
+    2300004: Tooth2
+    2300006: Tooth3
+    2300008: Tooth4
+    2300010: Tooth5
+    2300012: Tooth6
+    2300014: Tooth7
+    2300016: Tooth8
+    3300000: Lip
+    3300002: Tooth1
+    3300004: Tooth2
+    3300006: Tooth3
+    3300008: Tooth4
+    3300010: Tooth5
+    3300012: Tooth6
+    3300014: Tooth7
+    3300016: Tooth8
+    4300000: Lip
+    4300002: Tooth1
+    4300004: Tooth2
+    4300006: Tooth3
+    4300008: Tooth4
+    4300010: Tooth5
+    4300012: Tooth6
+    4300014: Tooth7
+    4300016: Tooth8
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

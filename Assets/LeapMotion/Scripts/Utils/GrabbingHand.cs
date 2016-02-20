@@ -96,12 +96,14 @@ public class GrabbingHand : MonoBehaviour
 				!close_things[j].transform.IsChildOf( transform ) &&
 				close_things[j].tag != "NotGrabbable" )
 			{
-
-				GrabbableObject grabbable = close_things[j].GetComponent<GrabbableObject>();
-				if ( grabbable == null || !grabbable.IsGrabbed() )
+				if ( !close_things[j].GetComponent<Joint>() || ( close_things[j].GetComponent<Joint>().breakForce != Mathf.Infinity ) )
 				{
-					closest = close_things[j];
-					closest_sqr_distance = sqr_distance;
+					GrabbableObject grabbable = close_things[j].GetComponent<GrabbableObject>();
+					if ( grabbable == null || !grabbable.IsGrabbed() )
+					{
+						closest = close_things[j];
+						closest_sqr_distance = sqr_distance;
+					}
 				}
 			}
 		}
@@ -173,6 +175,11 @@ public class GrabbingHand : MonoBehaviour
 		{
 			last_max_angular_velocity_ = active_object_.GetComponent<Rigidbody>().maxAngularVelocity;
 			active_object_.GetComponent<Rigidbody>().maxAngularVelocity = Mathf.Infinity;
+		}
+		if ( grabbable == null || grabbable.noRotation )
+		{
+			last_max_angular_velocity_ = active_object_.GetComponent<Rigidbody>().maxAngularVelocity;
+			active_object_.GetComponent<Rigidbody>().maxAngularVelocity = 0;
 		}
 
 		if ( grabbable != null )

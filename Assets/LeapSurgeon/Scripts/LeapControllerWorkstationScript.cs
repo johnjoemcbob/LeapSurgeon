@@ -105,6 +105,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 				}
 			}
 			LerpPosition = ( towards.position - transform.position ) * 0.85f;
-		}
+			LerpPosition.y = 0;
+        }
 	}
 }
