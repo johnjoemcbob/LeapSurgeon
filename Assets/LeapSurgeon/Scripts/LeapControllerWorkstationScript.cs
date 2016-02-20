@@ -104,7 +104,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 					towards = Table_Right;
 				}
 			}
-			LerpPosition = ( towards.position - transform.position ) * 0.75f;
+			LerpPosition = ( towards.position - transform.position ) * 0.85f;
 		}
 	}
 }

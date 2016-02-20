@@ -33,8 +33,8 @@ public class CameraFollowHandsScript : MonoBehaviour
 			// As it moves further into the scene the camera should also move downwards to face the surgery area
 			float extraz = Mathf.Clamp( ( handcenter.z + 0.75f ) * 0.5f, 0, 1 );
 			pos += transform.parent.forward * extraz;
+			pos.y -= 0.5f;
 			handcenter.y -= extraz * 2;
-			handcenter.y -= 1;
 		}
 		float mag = Vector3.Distance( transform.position, pos ) * 1;
 		transform.position = Vector3.Lerp( transform.position, pos, Time.deltaTime * mag );
