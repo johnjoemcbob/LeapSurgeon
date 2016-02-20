@@ -11,26 +11,40 @@ public class TriggerObjectsWithinScript : MonoBehaviour
 {
 	public List<GameObject> Objects = new List<GameObject>();
 
+	void LateUpdate()
+	{
+		Objects.Clear();
+	}
+
 	void OnTriggerEnter( Collider other )
 	{
-		GameObject obj = other.gameObject;
-		{
-			if ( obj.GetComponentInParent<RigidHand>() )
-			{
-				obj = obj.GetComponentInParent<RigidHand>().gameObject;
-			}
-		}
-        Objects.Add( obj );
+		AddObject( other.gameObject );
     }
+
+	void OnTriggerStay( Collider other )
+	{
+		AddObject( other.gameObject );
+	}
 
 	void OnTriggerExit( Collider other )
 	{
-		GameObject obj = other.gameObject;
+		RemoveObject( other.gameObject );
+	}
+
+	public void AddObject( GameObject obj )
+	{
+		if ( obj.GetComponentInParent<RigidHand>() )
 		{
-			if ( obj.GetComponentInParent<RigidHand>() )
-			{
-				obj = obj.GetComponentInParent<RigidHand>().gameObject;
-			}
+			obj = obj.GetComponentInParent<RigidHand>().gameObject;
+		}
+		Objects.Add( obj );
+	}
+
+	public void RemoveObject( GameObject obj )
+	{
+		if ( obj.GetComponentInParent<RigidHand>() )
+		{
+			obj = obj.GetComponentInParent<RigidHand>().gameObject;
 		}
 		Objects.Remove( obj );
 	}

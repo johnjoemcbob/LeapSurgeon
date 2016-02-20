@@ -63,11 +63,11 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 			if ( ( !HandWorkstationMoved[offset + 1][handid] ) && ( NextMove <= Time.time ) )
 			{
 				// Hand is moving fast enough to move to another workstation
-				float speed = 1.0f * offset;
-				if (
-					( ( offset < 0 ) && ( hand.PalmVelocity.x < speed ) ) ||
-					( ( offset > 0 ) && ( hand.PalmVelocity.x > speed ) )
-				)
+				//float speed = 0.4f * offset;
+				//if (
+				//	( ( offset < 0 ) && ( hand.PalmVelocity.x < speed ) ) ||
+				//	( ( offset > 0 ) && ( hand.PalmVelocity.x > speed ) )
+				//)
 				{
 					MoveWorkstation( offset );
 					HandWorkstationMoved[offset + 1][handid] = true;
@@ -78,6 +78,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 		else if ( HandWorkstationMoved[offset + 1][handid] )
 		{
 			HandWorkstationMoved[offset + 1][handid] = false;
+			bound.RemoveObject( physicshand.gameObject );
         }
 	}
 
