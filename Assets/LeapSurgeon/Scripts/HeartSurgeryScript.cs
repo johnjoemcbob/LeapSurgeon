@@ -29,7 +29,7 @@ public class HeartSurgeryScript : BaseSurgeryScript
 		bool heart_new = HeartTrigger.Objects.Contains( Heart_New );
 		if ( !lung_left && !lung_right && !heart_old && heart_new )
 		{
-			if ( WinTimer >= 1 )
+			if ( ( WinTimer >= 1 ) && ( ReplaceTimer == -1 ) )
 			{
 				Win();
 			}
