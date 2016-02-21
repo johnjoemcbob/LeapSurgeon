@@ -24,6 +24,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 	private Vector3 LerpPosition = Vector3.zero;
 	private float NextMove = 0;
     private bool[][] HandWorkstationMoved = new bool[][] { new bool[2], new bool[2], new bool[2] };
+	private bool Setup = false;
 
 	void Update()
 	{
@@ -40,7 +41,17 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 
 		// Lerp the position
 		transform.position = Vector3.Lerp( transform.position, LerpPosition, Time.deltaTime * 5 );
-    }
+
+		if ( !Setup )
+		{
+			MoveWorkstation( 1 );
+			LerpPosition = new Vector3( 3.4f, 0, 0.85f );
+			transform.position = LerpPosition;
+			LerpAngle = AngleChange;
+            transform.localEulerAngles = new Vector3( 0, AngleChange, 0 );
+			Setup = true;
+		}
+	}
 
 	private void UpdateHand( CapsuleHand scenehand, RigidHand physicshand, int handid )
 	{
@@ -82,20 +93,28 @@ public class LeapControllerWorkstationScript : MonoBehaviour
         }
 	}
 
-	private void MoveWorkstation( int offset )
+	public void MoveWorkstation( int offset )
 	{
 		// Don't move if already at the limit of that direction
 		if ( CurrentWorkstation == offset ) return;
 
+		MoveToWorkstation( CurrentWorkstation + offset );
+	}
+
+	public void MoveToWorkstation( int station )
+	{
+		// Don't move if already at the station
+		if ( CurrentWorkstation == station ) return;
+
 		// Rotate to new workstation
-		LerpAngle += AngleChange * offset;
+		LerpAngle = AngleChange * station;
 
 		// Update workstation
-		CurrentWorkstation += offset;
+		CurrentWorkstation = station;
 
 		// Translate if one of the side tables
 		LerpPosition = Vector3.zero;
-        if ( CurrentWorkstation != 0 )
+		if ( CurrentWorkstation != 0 )
 		{
 			Transform towards = Table_Left;
 			{
@@ -104,8 +123,8 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 					towards = Table_Right;
 				}
 			}
-			LerpPosition = ( towards.position - transform.position ) * 0.85f;
+			LerpPosition = ( towards.position - LerpPosition ) * 0.85f;
 			LerpPosition.y = 0;
-        }
+		}
 	}
 }
