@@ -47,7 +47,7 @@ public class CameraFollowHandsScript : MonoBehaviour
 	{
 		Vector3 influence = Vector3.zero;
 		{
-			Hand leaphand = (Hand) hand.GetComponent<CapsuleHand>().GetLeapHand();
+			Hand leaphand = (Hand) hand.GetComponent<RiggedHand>().GetLeapHand();
 			if ( hand.activeInHierarchy && ( leaphand != null ) )
 			{
 				// Don't influence the camera if they are offscreen

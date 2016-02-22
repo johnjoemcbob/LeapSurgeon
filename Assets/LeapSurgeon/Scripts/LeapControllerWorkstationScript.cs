@@ -10,8 +10,8 @@ using Leap;
 public class LeapControllerWorkstationScript : MonoBehaviour
 {
 	public float AngleChange = 50;
-	public CapsuleHand Hand_Left;
-	public CapsuleHand Hand_Right;
+	public RiggedHand Hand_Left;
+	public RiggedHand Hand_Right;
 	public RigidHand Hand_Physics_Left;
 	public RigidHand Hand_Physics_Right;
 	public TriggerObjectsWithinScript Bound_Left;
@@ -53,7 +53,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 		}
 	}
 
-	private void UpdateHand( CapsuleHand scenehand, RigidHand physicshand, int handid )
+	private void UpdateHand( RiggedHand scenehand, RigidHand physicshand, int handid )
 	{
 		Hand hand = scenehand.GetLeapHand();
 		if ( hand == null ) return;
@@ -63,7 +63,7 @@ public class LeapControllerWorkstationScript : MonoBehaviour
 		UpdateHandBound( scenehand, physicshand, Bound_Right, handid, 1 );
 	}
 
-	private void UpdateHandBound( CapsuleHand scenehand, RigidHand physicshand, TriggerObjectsWithinScript bound, int handid, int offset )
+	private void UpdateHandBound( RiggedHand scenehand, RigidHand physicshand, TriggerObjectsWithinScript bound, int handid, int offset )
 	{
 		Hand hand = scenehand.GetLeapHand();
 

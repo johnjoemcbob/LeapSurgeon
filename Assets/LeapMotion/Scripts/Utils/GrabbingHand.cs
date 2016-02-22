@@ -141,7 +141,7 @@ public class GrabbingHand : MonoBehaviour
 		if ( active_object_ == null )
 			return;
 
-		Hand hand = GetComponent<CapsuleHand>().GetLeapHand();
+		Hand hand = GetComponent<RiggedHand>().GetLeapHand();
 		Leap.Utils.IgnoreCollisions( gameObject, active_object_.gameObject, true );
 		GrabbableObject grabbable = active_object_.GetComponent<GrabbableObject>();
 
@@ -226,7 +226,7 @@ public class GrabbingHand : MonoBehaviour
 
 	protected PinchState GetNewPinchState()
 	{
-		Hand leap_hand = GetComponent<CapsuleHand>().GetLeapHand();
+		Hand leap_hand = GetComponent<RiggedHand>().GetLeapHand();
 
 		Vector leap_thumb_tip = leap_hand.Fingers[0].TipPosition;
 		float closest_distance = Mathf.Infinity;
@@ -261,7 +261,7 @@ public class GrabbingHand : MonoBehaviour
 
 	protected void UpdatePinchPosition()
 	{
-		Hand hand = GetComponent<CapsuleHand>().GetLeapHand();
+		Hand hand = GetComponent<RiggedHand>().GetLeapHand();
 		if ( hand == null ) return;
 
 		Vector tip = hand.Fingers[0].TipPosition + hand.Fingers[1].TipPosition;
@@ -279,7 +279,7 @@ public class GrabbingHand : MonoBehaviour
 
 	protected void UpdatePalmRotation()
 	{
-		Hand hand = GetComponent<CapsuleHand>().GetLeapHand();
+		Hand hand = GetComponent<RiggedHand>().GetLeapHand();
 		if ( hand == null ) return;
 
 		Quaternion rot = GetPalmRotation( hand );
@@ -353,7 +353,7 @@ public class GrabbingHand : MonoBehaviour
 	{
 		UpdatePalmRotation();
 		UpdatePinchPosition();
-		Hand leap_hand = GetComponent<CapsuleHand>().GetLeapHand();
+		Hand leap_hand = GetComponent<RiggedHand>().GetLeapHand();
 
 		if ( leap_hand == null )
 			return;

@@ -20,7 +20,6 @@ public class RiggedHand : HandModel {
   public Vector3 modelPalmFacing = -Vector3.up;
 
   public override void InitHand() {
-    Debug.Log("HandModel.InitHand()");
     UpdateHand();
   }
 

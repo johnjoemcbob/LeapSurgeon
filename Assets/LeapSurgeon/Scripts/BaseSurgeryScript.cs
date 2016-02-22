@@ -27,8 +27,11 @@ public class BaseSurgeryScript : MonoBehaviour
 			// Replace surgery now
 			gameObject.SetActive( false );
 			CurrentDynamic.SetActive( false );
-			NextSurgery.gameObject.SetActive( true );
-			NextDynamic.SetActive( true );
+			if ( NextSurgery )
+			{
+				NextSurgery.gameObject.SetActive( true );
+				NextDynamic.SetActive( true );
+			}
 
 			// Start filling the scoreout through the text
 			Image_ScoreOut.GetComponent<UIImageFillProgressScript>().enabled = true;
