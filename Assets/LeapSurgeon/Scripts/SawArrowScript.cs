@@ -16,10 +16,14 @@ public class SawArrowScript : MonoBehaviour
 	{
 		if ( other.GetComponent<CanSawFlagScript>() )
 		{
-			Arrow_Top.GetComponent<Rigidbody>().isKinematic = false;
-			Arrow_Top.gameObject.layer = LayerMask.NameToLayer( "Grabbable" );
-			GetComponent<ParticleSystem>().Play();
-			Arrow_Bottom.GetComponent<HammerArrowScript>().enabled = true;
+			if ( Arrow_Top.GetComponent<Rigidbody>().isKinematic )
+			{
+				Arrow_Top.GetComponent<Rigidbody>().isKinematic = false;
+				Arrow_Top.gameObject.layer = LayerMask.NameToLayer( "Grabbable" );
+				GetComponent<ParticleSystem>().Play();
+				GetComponent<AudioSource>().Play();
+				Arrow_Bottom.GetComponent<HammerArrowScript>().enabled = true;
+			}
 		}
 	}
 }

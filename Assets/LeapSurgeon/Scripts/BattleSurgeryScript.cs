@@ -36,7 +36,6 @@ public class BattleSurgeryScript : BaseSurgeryScript
 				Win();
 			}
 			WinTimer += Time.deltaTime * 12;
-			print( WinTimer );
         }
 		else
 		{

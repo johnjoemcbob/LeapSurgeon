@@ -23,6 +23,12 @@ public class HammerArrowScript : MonoBehaviour
 			{
 				transform.localPosition -= transform.forward * 0.5f;
 				Pushed = true;
+
+				// Play sound effects
+				foreach ( AudioSource audio in GetComponents<AudioSource>() )
+				{
+					audio.Play();
+				}
             }
 		}
 	}

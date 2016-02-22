@@ -9,6 +9,8 @@ using System.Collections.Generic;
 public class LeechHeadScript : MonoBehaviour
 {
 	public List<GameObject> Segments;
+	public AudioSource Audio_Loop;
+	public AudioSource Audio_Stop;
 
 	private GameObject Attached;
 
@@ -34,6 +36,8 @@ public class LeechHeadScript : MonoBehaviour
 		GetComponent<Rigidbody>().isKinematic = true;
 		transform.LookAt( attach.transform );
 
+		Audio_Loop.Play();
+
 		Attached = attach;
 		return true;
     }
@@ -42,7 +46,10 @@ public class LeechHeadScript : MonoBehaviour
 	{
 		GetComponent<Rigidbody>().isKinematic = false;
 
+		Audio_Loop.Stop();
+		Audio_Stop.Play();
+
 		// Never attach again
 		//Attached = null;
-    }
+	}
 }

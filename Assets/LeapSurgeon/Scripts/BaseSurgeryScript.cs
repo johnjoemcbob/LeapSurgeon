@@ -32,10 +32,17 @@ public class BaseSurgeryScript : MonoBehaviour
 
 			// Start filling the scoreout through the text
 			Image_ScoreOut.GetComponent<UIImageFillProgressScript>().enabled = true;
+			Image_ScoreOut.GetComponent<AudioSource>().enabled = true;
 
 			// Only do it once
 			ReplaceTimer = -1;
 
+			// Reenable the hands
+			Hand_Left.enabled = true;
+			Hand_Right.enabled = true;
+		}
+		if ( ( ReplaceTimer == -1 ) && ( !Hand_Left.enabled ) )
+		{
 			// Reenable the hands
 			Hand_Left.enabled = true;
 			Hand_Right.enabled = true;
