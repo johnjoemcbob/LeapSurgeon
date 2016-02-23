@@ -63,10 +63,10 @@ public class EnvelopeScript : MonoBehaviour
 			// Initialize time taken for this stage
 			if ( ( Stage == 3 ) && ( NextStageTime == -1 ) )
 			{
-				NextStageTime = Time.time + 4;
+				NextStageTime = Time.time + 1;
 			}
 
-			transform.parent.localPosition = Vector3.Lerp( transform.parent.localPosition, transform.parent.localPosition + transform.parent.forward * 10, Time.deltaTime * 2 );
+			transform.parent.localPosition = Vector3.Lerp( transform.parent.localPosition, transform.parent.localPosition + transform.parent.forward * 4, Time.deltaTime * 2 );
 		}
 
 		// Then flag as won
