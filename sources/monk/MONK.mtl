@@ -1,0 +1,50 @@
+# Blender MTL File: 'MONK.blend'
+# Material Count: 4
+
+newmtl Hair
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd TEXTURE\hair-skin.png
+map_d TEXTURE\\hair-skin.png
+
+newmtl Monk-Body
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd TEXTURE\monk-tuc-body-AO.png
+map_Bump TEXTURE\\monk-tuc-body-norm512.png
+
+newmtl Monk-Head
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd TEXTURE\monk-tuc-head-skin.png
+map_Bump TEXTURE\\monk-tuc-head-norm512.png
+
+newmtl Monk-Head_NONE
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump TEXTURE\\monk-tuc-head-norm512.png
+map_Kd TEXTURE\\monk-tuc-head-skin.png
